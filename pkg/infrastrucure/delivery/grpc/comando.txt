@@ -1,0 +1,2 @@
+protoc item_products.proto --go_out=plugins=grpc:.
+go clean -cache -modcache -i -r

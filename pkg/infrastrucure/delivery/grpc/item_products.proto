@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package item_products_pb.itemProducts;
+option go_package = "itemProductspb;itemProductspb";
+
+message CategoryIdRequest {
+  uint32 req_category_id = 1;
+}
+
+message ItemListResponse {
+  repeated Item lista_items = 1;  
+}
+
+message ItemStatusResponse {
+  bool status_successful = 1;
+}
+
+message Item {
+  string  category    = 1;     
+  uint32  item_id      = 2;    
+  uint32  category_id  = 3;    
+  string  nombre_item  = 4;  
+  string  image_name   = 5;  
+  string  descripcion = 6;
+  float   item_price   = 7;
+}
+
+service ProductoStock {
+  rpc GetProductsList (CategoryIdRequest) returns (ItemListResponse);
+  rpc SetProduct (Item) returns (ItemStatusResponse);
+}
